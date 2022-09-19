@@ -13,6 +13,6 @@ Punk Beer App es una aplicación para Android que muestra el listado de todas la
 
 ## Posibles vías de expansión  :muscle:
 - Añadir una base de datos local (con *Room*, por ejemplo). De esta forma no es necesario realizar tantas peticiones a la API, además de la posibilidad de poder utilizar la aplicación sin conexión
-- Añadir una caché para guardar temporalmente la lista de datos, incrementando el rendimiento
+- Añadir una caché para guardar temporalmente la lista de datos, optimizando el rendimiento
 - Utilizar la biblioteca *Paging3* para añadir paginación y que la lista se vaya actualizando conforme el usuario hace scroll
 - Implementar UI Test 
