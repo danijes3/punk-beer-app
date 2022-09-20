@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import com.dani.punkbeerapp.R
 import com.dani.punkbeerapp.databinding.FragmentDetailsBinding
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DetailsFragment() : Fragment() {
     private lateinit var fragmentDetailsBinding: FragmentDetailsBinding
-    private lateinit var adapter: RecyclerViewAdapter
+    @Inject
+    lateinit var adapter: RecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +30,6 @@ class DetailsFragment() : Fragment() {
 
         arguments?.let {
             val position = it.getInt("position")
-            adapter = (activity as MainActivity).adapter
             val beer = adapter.differ.currentList[position]
             fragmentDetailsBinding.name.text = beer.name
             fragmentDetailsBinding.abv.text = "ABV " + beer.abv.toString()
