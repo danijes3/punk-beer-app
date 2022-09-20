@@ -44,6 +44,7 @@ class BeersAPIServiceTest {
     fun getBeers_check_request_path() {
         runBlocking {
             mockServer.enqueue(mockResponseFromFile("success_response.json"))
+            val response = service.getBeers(1,20).body()
             val request = mockServer.takeRequest()
             assertThat(request.path).isEqualTo("/v2/beers?page=1&per_page=20")
         }

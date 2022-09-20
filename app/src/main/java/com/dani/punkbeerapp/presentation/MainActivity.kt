@@ -5,15 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dani.punkbeerapp.R
 import com.dani.punkbeerapp.data.util.Resource
 import com.dani.punkbeerapp.databinding.ActivityMainBinding
 import com.dani.punkbeerapp.databinding.ActivityMainBinding.inflate
 import com.dani.punkbeerapp.presentation.viewmodel.BeerViewModel
-import com.dani.punkbeerapp.presentation.viewmodel.BeerViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -22,20 +21,16 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    @Inject
-    lateinit var factory: BeerViewModelFactory
-    private lateinit var beerViewModel : BeerViewModel
+
     private lateinit var binding : ActivityMainBinding
     @Inject
     lateinit var adapter: RecyclerViewAdapter
+    private val beerViewModel: BeerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)
         setContentView(binding.root)
-
-        beerViewModel = ViewModelProvider(this, factory)
-            .get(BeerViewModel::class.java)
 
         initRecyclerView()
         viewBeers()

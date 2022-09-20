@@ -10,10 +10,13 @@ import com.dani.punkbeerapp.data.model.Beer
 import com.dani.punkbeerapp.data.util.Resource
 import com.dani.punkbeerapp.domain.usecase.GetBeerByNameUseCase
 import com.dani.punkbeerapp.domain.usecase.GetBeersUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BeerViewModel(
+@HiltViewModel
+class BeerViewModel @Inject constructor(
     private val app : Application,
     private val getBeersUseCase: GetBeersUseCase,
     private val getBeerByNameUseCase: GetBeerByNameUseCase
